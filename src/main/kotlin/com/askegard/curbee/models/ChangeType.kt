@@ -4,14 +4,14 @@ sealed class ChangeType(
     open val property: String,
 )
 
-class PropertyUpdate(
+data class PropertyUpdate(
     override val property: String,
     val previous: String?,
     val current: String?,
 ): ChangeType(property)
 
-class ListUpdate(
+data class ListUpdate(
     override val property: String,
-    val added: Array<String>,
-    val removed: Array<String>,
+    val added: List<String>,
+    val removed: List<String>,
 ): ChangeType(property)
