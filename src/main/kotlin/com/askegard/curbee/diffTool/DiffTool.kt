@@ -39,9 +39,9 @@ class DiffTool(
 
     private fun getDiffSerialization(previous: Any, current: Any, parentPath: String = "", isParentList: Boolean = false): MutableList<ChangeType> {
         val previousSerialized = objectMapper.writeValueAsString(previous)
-        val previousAsMap = objectMapper.readValue<Map<String,Any?>>(previousSerialized)
+        val previousAsMap = objectMapper.readValue<HashMap<String,Any?>>(previousSerialized)
         val currentSerialized = objectMapper.writeValueAsString(current)
-        val currentAsMap = objectMapper.readValue<Map<String,Any?>>(currentSerialized)
+        val currentAsMap = objectMapper.readValue<HashMap<String,Any?>>(currentSerialized)
 
         val diffs = mutableListOf<ChangeType>()
         for ((key, previousValue) in previousAsMap) {
@@ -74,8 +74,8 @@ class DiffTool(
                 ))
                 previousValue is Map<*, *> && currentValue is Map<*, *> -> {
                     val nestedPropertyDiffs = getDiffSerialization(
-                        previous = previousValue as Map<String, Any>,
-                        current = currentValue as Map<String, Any>,
+                        previous = previousValue as HashMap<String, Any>,
+                        current = currentValue as HashMap<String, Any>,
                         parentPath = parentPath,
                     )
                     diffs.addAll(nestedPropertyDiffs)

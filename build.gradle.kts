@@ -1,7 +1,6 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "3.1.3"
 	id("io.spring.dependency-management") version "1.1.3"
 	kotlin("jvm") version "1.8.22"
 	kotlin("plugin.spring") version "1.8.22"
@@ -19,10 +18,9 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter")
+	implementation("com.fasterxml.jackson.core:jackson-databind:2.15.2")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
 tasks.withType<KotlinCompile> {
