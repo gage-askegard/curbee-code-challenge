@@ -76,7 +76,7 @@ class DiffTool(
                     val nestedPropertyDiffs = getDiffSerialization(
                         previous = previousValue as HashMap<String, Any>,
                         current = currentValue as HashMap<String, Any>,
-                        parentPath = parentPath,
+                        parentPath = propertyPath,
                     )
                     diffs.addAll(nestedPropertyDiffs)
                 }
